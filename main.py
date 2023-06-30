@@ -56,6 +56,21 @@ def book(id):
                     return jsonify({'new_data':book_list,'message':'successfully deleted','status':'success'})
             except:
                 return jsonify({'message': 'Could not find resource to delete','status':'failed'})
-        
-            
+        else:
+            return jsonify({'message': 'Resource does not exist', 'status': 'Failed'})
+    if request.method == 'PUT':
+        title = request.form.get('title')
+        author = request.form.get('author')
+        if id != 0:
+            try:
+                if title is not None and author is not None:
+                    book_list[id -1]['title'] = title
+                    book_list[id -1]['author'] = author
+                    return jsonify({'new_data':book_list,'message':'Successfully updated','status':'success'})
+                else:
+                    return jsonify({'message': 'Invalid params', 'status': 'Failed'}), 404
+            except:
+                return jsonify({'message': 'Resource does not exist', 'status': 'Failed'})
+        else:
+            return jsonify({'message': 'Resource does not exist', 'status': 'Failed'})
     
