@@ -16,13 +16,11 @@ def books():
         title = request.method['title'] or None
         author = request.method['author'] or None
         id = book_list[-1]['id'] + 1
-        if title is not None and author is not None:
+        if title and author:
             book_list.append({'id':id,'title':title,'author':author})
             return jsonify(book_list), 201
-        elif title is None:
-            return jsonify({'message': 'Title not specified'}), 404
-        elif author is None:
-            return jsonify({'message': 'Author not specified'}), 404
+        else:
+            return jsonify({'message': 'Invalid values'}), 404
         
         
             
