@@ -14,6 +14,7 @@ def books():
             return jsonify(book_list)
     if request.method == 'POST':
         title = request.form['title'] or None
+        print(title)
         author = request.form['author'] or None
         id = book_list[-1]['id'] + 1
         if title and author:
