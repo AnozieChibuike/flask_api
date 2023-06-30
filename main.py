@@ -53,7 +53,7 @@ def book(id):
                     for i in book_list:
                         i['id'] = new_id
                         new_id += 1
-                    return jsonify({'data':book_list,'status':'success'})
+                    return jsonify({'new_data':book_list,'message':'successfully deleted','status':'success'})
             except:
                 return jsonify({'message': 'Could not find resource to delete','status':'failed'})
         
