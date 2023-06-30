@@ -13,14 +13,17 @@ def books():
         if request.args:
             id = request.args.get('id')
             if id is not None and id != 0:
-                return jsonify({'data': book_list[id -1],'status':'success'})
+                try:
+                    return jsonify({'data': book_list[id -1],'status':'success'})
+                except:
+                    return jsonify({'message': 'Id specified does not exist', 'status': 'Failed'})
             elif id == 0:
                 return jsonify({'message': 'Id specified does not exist', 'status': 'Failed'})
             else:
                 return jsonify({'message': 'Did not specify an ID', 'status': 'Failed'})
         else:
             if book_list:
-            return jsonify({'data':book_list,'status':'success'})
+                return jsonify({'data':book_list,'status':'success'})
     if request.method == 'POST':
         title = request.form.get('title')
         author = request.form.get('author')
