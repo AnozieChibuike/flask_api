@@ -40,9 +40,17 @@ def book(id):
             try:
                 return jsonify({'data': book_list[id -1],'status':'success'})
             except:
-                return jsonify({'message': 'Id specified does not exist', 'status': 'Failed'})
+                return jsonify({'message': 'Resource does not exist', 'status': 'Failed'})
         else:
             return jsonify({'message': 'Id specified does not exist', 'status': 'Failed'})
+    if request.method == 'DELETE':
+        if id != 0:
+            try:
+                del book_list[id -1]
+                if book_list:
+                    return jsonify({'data':book_list,'status':'success'})
+            except:
+                return jsonify({'message': 'Could not find resource to delete','status':'failed'})
         
             
     
