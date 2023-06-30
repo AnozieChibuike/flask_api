@@ -13,15 +13,16 @@ def books():
         if book_list:
             return jsonify(book_list)
     if request.method == 'POST':
-        title = request.method['title'] or None
-        author = request.method['author'] or None
+        title = request.form['title'] or None
+        author = request.form['author'] or None
         id = book_list[-1]['id'] + 1
         if title and author:
             book_list.append({'id':id,'title':title,'author':author})
             return jsonify(book_list), 201
-        else:
-            return jsonify({'message': 'Invalid values'}), 404
-        
+        elif title is None:
+            return jsonify({'message': 'Input values for title'}), 404
+        elif author is None:
+            return jsonify({'message': 'Input value for author'}), 404
         
             
     
