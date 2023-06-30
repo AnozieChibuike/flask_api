@@ -7,7 +7,7 @@ book_list = [
     {'id': 2,'title': 'Poor dad Rich dad','autho':'John Neeman'},
     ]
 
-@app.route('/books',methods=['GET','POST')
+@app.route('/books',methods=['GET','POST'])
 def books():
     if request.method == 'GET':
         if book_list:
