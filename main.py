@@ -13,15 +13,14 @@ def books():
         if book_list:
             return jsonify(book_list)
     if request.method == 'POST':
-        if len(request.form) == 2:
-            title = request.form['title']
-            author = request.form['author']
-            id = book_list[-1]['id'] + 1
-        if title and author:
+        title = request.form.get('title')
+        author = request.form.get('author')
+        id = book_list[-1]['id'] + 1
+        if title is not None and author is not None:
             book_list.append({'id':id,'title':title,'author':author})
             return jsonify(book_list), 201
         else:
-            return jsonify({'message': f'Required 2 paramters got {len(request.form)}'}), 404
+            return jsonify({'message': f'Required 2 params got {len(request.form)}'}), 404
         
             
     
