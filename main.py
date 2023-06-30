@@ -12,6 +12,7 @@ def books():
     if request.method == 'GET':
         if request.args:
             id = request.args.get('id')
+            print(id)
             if id is not None and id != 0:
                 try:
                     return jsonify({'data': book_list[id -1],'status':'success'})
