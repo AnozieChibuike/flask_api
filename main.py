@@ -16,7 +16,8 @@ def books():
             if id is not None and id != 0:
                 try:
                     return jsonify({'data': book_list[id -1],'status':'success'})
-                except:
+                except as e:
+                    return e
                     return jsonify({'message': 'Id specified does not exist', 'status': 'Failed'})
             elif id == 0:
                 return jsonify({'message': 'Id specified does not exist', 'status': 'Failed'})
