@@ -24,9 +24,12 @@ def books():
 @app.route('/books/<int:id>',methods=['GET','PUT','DELETE'])
 def book(id):
     if request.method == 'GET':
-        try:
-            return jsonify({'data': book_list[id -1],'status':'success'})
-        except:
+        if id != 0:
+            try:
+                return jsonify({'data': book_list[id -1],'status':'success'})
+            except:
+                return jsonify({'message': 'Id specified does not exist', 'status': 'Failed'})
+        else:
             return jsonify({'message': 'Id specified does not exist', 'status': 'Failed'})
         
             
