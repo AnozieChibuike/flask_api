@@ -11,16 +11,16 @@ book_list = [
 def books():
     if request.method == 'GET':
         if book_list:
-            return jsonify(book_list)
+            return jsonify({'data':book_list,'status':'success'})
     if request.method == 'POST':
         title = request.form.get('title')
         author = request.form.get('author')
         id = book_list[-1]['id'] + 1
         if title is not None and author is not None:
             book_list.append({'id':id,'title':title,'author':author})
-            return jsonify(book_list), 201
+            return jsonify({'data': book_list,'message': 'Created Successfully', 'status': 'success'}), 201
         else:
-            return jsonify({'message': f'Required 2 params got {len(request.form)}'}), 404
+            return jsonify({'message': 'Invalid params', 'status': 'Failed'}), 404
         
             
     
