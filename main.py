@@ -21,7 +21,7 @@ def books():
             book_list.append({'id':id,'title':title,'author':author})
             return jsonify(book_list), 201
         else:
-            return jsonify({'message': f'Required 2 paramters got {len(request.form)'}), 404
+            return jsonify({'message': f'Required 2 paramters got {len(request.form)}'}), 404
         
             
     
