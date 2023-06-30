@@ -33,7 +33,7 @@ def books():
             return jsonify({'data': book_list,'message': 'Created Successfully', 'status': 'success'}), 201
         else:
             return jsonify({'message': 'Invalid params', 'status': 'Failed'}), 404
-@app.route('/books/<int:id>,methods=['GET','PUT','DELETE'])
+@app.route('/books/<int:id>',methods=['GET','PUT','DELETE'])
 def book(id):
     if request.method == 'GET':
         if id != 0:
