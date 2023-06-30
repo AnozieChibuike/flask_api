@@ -11,5 +11,5 @@ book_list = [
 def books():
     if request.method == 'GET':
         if book_list:
-            return jsonify(book_list)
+            return jsonify(book_list), 500
     
