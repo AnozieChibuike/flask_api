@@ -22,7 +22,7 @@ def books():
         elif title is None:
             return jsonify({'message': 'Title not specified'}), 404
         elif author is None:
-            return jsonify({'message': 'Author not specified'}), 404@'
+            return jsonify({'message': 'Author not specified'}), 404
         
         
             
