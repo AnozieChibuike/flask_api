@@ -1,5 +1,11 @@
 from flask import Flask,request,jsonify
 
+'''
+Not all best practices were used in this project
+'''
+
+
+
 app = Flask(__name__)
 
 book_list = [
